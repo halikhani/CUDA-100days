@@ -15,7 +15,7 @@ __global__ void MatrixAdd_B(const float* A, const float* B, float* C, int N) {
     int i = blockIdx.x * blockDim.x + threadIdx.x;
     int j = blockIdx.y * blockDim.y + threadIdx.y;
 
-    if ((i >= N) && (j >= N)) { return ; }
+    if ((i >= N) || (j >= N)) { return ; }
 
     C[i*N+j] = A[i*N+j] + B[i*N+j];
 
