@@ -25,6 +25,10 @@ __global__ void Kogge_Stone_scan_kernel(float *X, float *Y, int InputSize){
     if (i < InputSize){
         Y[i] = XY[threadIdx.x];
     }
+    // to convert to exclusive scan, uncomment the lines below
+    // if (i < InputSize && threadIdx.x != 0) {XY[threadIdx.x] = XY[threadIdx.x - 1];}
+    // else {XY[threadIdx.x] = 0.0f;}
+
 }
 
 int main(){
